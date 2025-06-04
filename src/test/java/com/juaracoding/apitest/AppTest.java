@@ -1,38 +1,26 @@
 package com.juaracoding.apitest;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.testng.annotations.Test;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
+import io.restassured.specification.RequestSpecification;
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+public class AppTest {
+    RequestSpecification requestSpecification;
+    Response response;
+    ValidatableResponse validatableResponse;
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void stepTest01() {
+        RestAssured.baseURI = "http://localhost:8000";
+
+        requestSpecification = RestAssured.given();
+        requestSpecification.header("Authorization", "Token e15f90cdb341ec965f4203fc25cdc71d2d6392db");
+        response = requestSpecification.get("/catalogs/groups/");
+        validatableResponse = response.then();
+        validatableResponse.statusCode(200);
+        validatableResponse.statusLine("HTTP/1.1 200 OK");
     }
 }
