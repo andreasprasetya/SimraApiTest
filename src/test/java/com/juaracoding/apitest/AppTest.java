@@ -5,7 +5,6 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -25,28 +24,24 @@ public class AppTest {
 
     @Test
     public void getListGroup() {
-        requestSpecification = RestAssured.given();
-        requestSpecification.header(
-                "Authorization",
-                "Token e15f90cdb341ec965f4203fc25cdc71d2d6392db");
-        response = requestSpecification.get("/catalogs/groups/");
+        // requestSpecification = RestAssured.given();
+        // requestSpecification.header(
+        // "Authorization",
+        // "Token cc5f27d68260c334ebeaa3c48c5a042142f63bea");
+        // response = requestSpecification.get("/catalogs/groups/");
 
-        Assert.assertEquals(response.getStatusLine(), "HTTP/1.1 200 OK");
-        Assert.assertEquals(response.getStatusCode(), 200);
+        // String next = response.jsonPath().getString("next");
+        // int count = response.jsonPath().getInt("count");
 
-        System.out.println("Isi next" + response.jsonPath().getString("next"));
-        String next = response.jsonPath().getString("next");
-        int count = response.jsonPath().getInt("count");
+        // if (next != null) {
+        // Assert.assertNotNull(next);
+        // } else {
+        // Assert.assertNull(next);
+        // }
 
-        if (next != null) {
-            Assert.assertNull(next);
-        } else {
-            Assert.assertNotNull(next);
-        }
-
-        Assert.assertNotNull(count);
-
-        System.out.println(response.jsonPath().getInt("count"));
+        // Assert.assertNotNull(count);
+        // Assert.assertEquals(response.getStatusLine(), "HTTP/1.1 200 OK");
+        // Assert.assertEquals(response.getStatusCode(), 200);
 
         RestAssured.given().header(
                         "Authorization",
@@ -56,7 +51,8 @@ public class AppTest {
                 .statusCode(200)
                 .statusLine("HTTP/1.1 200 OK")
                 .body("count", CoreMatchers.instanceOf(Integer.class))
-                .body("next", CoreMatchers.anyOf(CoreMatchers.nullValue(), CoreMatchers.instanceOf(Integer.class)));
+                .body("next", CoreMatchers.anyOf(CoreMatchers.nullValue(),
+                        CoreMatchers.instanceOf(Integer.class)));
     }
 
     @Test(dependsOnMethods = "getListGroup")
@@ -77,13 +73,15 @@ public class AppTest {
 
         id = response.jsonPath().getInt("id");
 
-        // validatableResponse = response.then();
-
-        // // Get status code
-        // validatableResponse.statusCode(200);
-
-        // // Check status line is as expected
-        // validatableResponse.statusLine("HTTP/1.1 200 OK");
+        response.then()
+                .statusCode(201)
+                .statusLine("HTTP/1.1 201 Created")
+                .body("id", CoreMatchers.instanceOf(Integer.class))
+                .body("title", CoreMatchers.instanceOf(String.class))
+                .body("origin", CoreMatchers.instanceOf(String.class))
+                .body("created_at", CoreMatchers.instanceOf(String.class))
+                .body("updated_at", CoreMatchers.instanceOf(String.class))
+                .body("owner", CoreMatchers.instanceOf(Integer.class));
 
     }
 
@@ -103,6 +101,14 @@ public class AppTest {
                 .when()
                 .put("/catalogs/groups/" + id + "/")
                 .then()
+                .statusCode(200)
+                .statusLine("HTTP/1.1 200 OK")
+                .body("id", CoreMatchers.instanceOf(Integer.class))
+                .body("title", CoreMatchers.instanceOf(String.class))
+                .body("origin", CoreMatchers.instanceOf(String.class))
+                .body("created_at", CoreMatchers.instanceOf(String.class))
+                .body("updated_at", CoreMatchers.instanceOf(String.class))
+                .body("owner", CoreMatchers.instanceOf(Integer.class))
                 .log().all();
     }
 
@@ -121,6 +127,8 @@ public class AppTest {
                 .when()
                 .delete("/catalogs/groups/" + id + "/")
                 .then()
+                .statusCode(204)
+                .statusLine("HTTP/1.1 204 No Content")
                 .log().all();
     }
 }
