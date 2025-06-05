@@ -1,7 +1,6 @@
 package com.juaracoding.apitest.definitions;
 
 import org.hamcrest.CoreMatchers;
-
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,7 +10,7 @@ import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 
-public class APIGroupTest {
+public class APIGroupListTest {
     RequestSpecification requestSpecification;
     Response response;
     ValidatableResponse validatableResponse;
