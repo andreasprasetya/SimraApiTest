@@ -2,9 +2,10 @@ package com.juaracoding.apitest.runners;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-@CucumberOptions(features = {
-        "src/test/resources/features/APIGroup.feature"
-}, glue = {
+
+@CucumberOptions(tags = "not (@Web or (@Mobile and @SmokeTest) or @NewFeature)",
+        features = {        "src/test/resources/features",
+        }, glue = {
         "com.juaracoding.apitest.hooks",
         "com.juaracoding.apitest.definitions"
 })

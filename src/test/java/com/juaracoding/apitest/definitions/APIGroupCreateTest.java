@@ -1,14 +1,9 @@
 package com.juaracoding.apitest.definitions;
 
-import org.hamcrest.CoreMatchers;
-import org.json.JSONObject;
-
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
@@ -18,15 +13,15 @@ public class APIGroupCreateTest {
     Response response;
     ValidatableResponse validatableResponse;
 
-    @Before
-    public void setup() {
-        System.out.println("APIGroupCreateTest::setup()");
-//        RestAssured.baseURI = "http://localhost:8000";
-    }
+//    @Before
+//    public void setup() {
+//        System.out.println("APIGroupCreateTest::setup()");
+////        RestAssured.baseURI = "http://localhost:8000";
+//    }
 
-    @Given("Preparing header for create group")
-    public void prepareHeader() {
-        System.out.println("APIGroupCreateTest::prepareHeader()");
+    //@Given("Preparing header for create group")
+   // public void prepareHeader() {
+        //System.out.println("APIGroupCreateTest::prepareHeader()");
 //        JSONObject payload = new JSONObject();
 //        payload.put("title", "Mobil Dinas Java");
 //        payload.put("origin", "Pemkot DKI Javarta");
@@ -37,7 +32,7 @@ public class APIGroupCreateTest {
 //                        "Token e15f90cdb341ec965f4203fc25cdc71d2d6392db")
 //                .contentType(ContentType.JSON)
 //                .body(payload.toString());
-    }
+  //  }
 
     @When("I post data payload to server")
     public void requestToServer() {
