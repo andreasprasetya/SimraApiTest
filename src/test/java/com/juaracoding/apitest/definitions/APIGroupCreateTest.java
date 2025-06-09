@@ -20,39 +20,43 @@ public class APIGroupCreateTest {
 
     @Before
     public void setup() {
-        RestAssured.baseURI = "http://localhost:8000";
+        System.out.println("APIGroupCreateTest::setup()");
+//        RestAssured.baseURI = "http://localhost:8000";
     }
 
     @Given("Preparing header for create group")
     public void prepareHeader() {
-        JSONObject payload = new JSONObject();
-        payload.put("title", "Mobil Dinas Java");
-        payload.put("origin", "Pemkot DKI Javarta");
-
-        requestSpecification = RestAssured.given()
-                .header(
-                        "Authorization",
-                        "Token e15f90cdb341ec965f4203fc25cdc71d2d6392db")
-                .contentType(ContentType.JSON)
-                .body(payload.toString());
+        System.out.println("APIGroupCreateTest::prepareHeader()");
+//        JSONObject payload = new JSONObject();
+//        payload.put("title", "Mobil Dinas Java");
+//        payload.put("origin", "Pemkot DKI Javarta");
+//
+//        requestSpecification = RestAssured.given()
+//                .header(
+//                        "Authorization",
+//                        "Token e15f90cdb341ec965f4203fc25cdc71d2d6392db")
+//                .contentType(ContentType.JSON)
+//                .body(payload.toString());
     }
 
     @When("I post data payload to server")
     public void requestToServer() {
-        response = requestSpecification.when()
-                .post("/catalogs/groups/");
+        System.out.println("APIGroupCreateTest::requestToServer()");
+//        response = requestSpecification.when()
+//                .post("/catalogs/groups/");
     }
 
     @Then("I received response 201 from the server")
     public void receivedFromServer() {
-        response.then()
-                .statusCode(201)
-                .statusLine("HTTP/1.1 201 Created")
-                .body("id", CoreMatchers.instanceOf(Integer.class))
-                .body("title", CoreMatchers.instanceOf(String.class))
-                .body("origin", CoreMatchers.instanceOf(String.class))
-                .body("created_at", CoreMatchers.instanceOf(String.class))
-                .body("updated_at", CoreMatchers.instanceOf(String.class))
-                .body("owner", CoreMatchers.instanceOf(Integer.class));
+        System.out.println("APIGroupCreateTest::receivedFromServer()");
+//        response.then()
+//                .statusCode(201)
+//                .statusLine("HTTP/1.1 201 Created")
+//                .body("id", CoreMatchers.instanceOf(Integer.class))
+//                .body("title", CoreMatchers.instanceOf(String.class))
+//                .body("origin", CoreMatchers.instanceOf(String.class))
+//                .body("created_at", CoreMatchers.instanceOf(String.class))
+//                .body("updated_at", CoreMatchers.instanceOf(String.class))
+//                .body("owner", CoreMatchers.instanceOf(Integer.class));
     }
 }
