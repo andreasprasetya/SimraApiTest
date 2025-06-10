@@ -7,8 +7,17 @@ Feature: Auth Functionality
         Then User should be redirected to the homepage
 
     @Registration @Mobile @SmokeTest
-    Scenario: Successful user registration
+    Scenario Outline: Successful user registration
+
         Given User is on the registration page
-        When User enters valid registration details
+        When User type first name "<firstName>"
+        And User type last name "<lastName>"
+        And User type email "<email>"
+        And User type password "<password>"
         And User submits the registration form
         Then User should see a success message
+
+        Examples:
+            | firstName | lastName  | email           | password    |
+            | Budi      | Wicaksono | budi@mail.com   | 123qwe      |
+            | Santi     | Sintia    | santi@mail.com  | 456qwe      |

@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class SignInTest {
+
     @Given("User is on the signin page")
     public void step01() {
         System.out.println("SignInTest::step01");
@@ -23,7 +24,7 @@ public class SignInTest {
 
     @Then("User should be redirected to the homepage")
     public void step04() {
-
+        System.out.println("SignInTest::step04");
     }
-}
 
+}
