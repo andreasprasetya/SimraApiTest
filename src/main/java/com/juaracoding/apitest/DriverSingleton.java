@@ -1,4 +1,3 @@
-
 package com.juaracoding.apitest;
 
 import org.openqa.selenium.WebDriver;
