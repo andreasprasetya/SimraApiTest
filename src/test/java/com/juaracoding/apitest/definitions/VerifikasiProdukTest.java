@@ -2,11 +2,9 @@ package com.juaracoding.apitest.definitions;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.ProdukListPage;
 import com.juaracoding.apitest.pages.SignInPage;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

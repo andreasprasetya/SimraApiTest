@@ -1,10 +1,8 @@
 package com.juaracoding.apitest.definitions;
 
 import org.openqa.selenium.WebDriver;
-
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.SignInPage;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
