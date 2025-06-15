@@ -30,6 +30,7 @@ public class VerifikasiProdukTest {
 
     @Then("Daftar produk muncul lengkap dengan nama, harga, dan tombol Add to Cart")
     public void testStep03() {
+        //https://www.saucedemo.com/v1/index.html
         Assert.assertTrue(produkListPage.checkProperty());
     }
 }
