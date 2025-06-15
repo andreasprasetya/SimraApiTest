@@ -7,16 +7,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.en_scouse.An;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-public class AddProduk {
+public class Checkout {
     WebDriver driver;
     SignInPage signInPage;
     ProdukListPage produkListPage;
-
-
-
     @Given("Pretest verifikasi, login dengan user valid")
     public void testStep01() {
         driver = DriverSingleton.createOrGetDriver();
@@ -36,13 +34,12 @@ public class AddProduk {
         Assert.assertTrue(produkListPage.checkProperty());
     }
 
-    @And("Klik tombol Add to Cart pada salah satu produk")
+    @Then("Lanjut dari ringkasan pembelian")
     public void testStep04() {
-
         Assert.assertTrue(produkListPage.checkProperty());
     }
 
-    @Then("Klik ikon keranjang")
+    @And("Klik tombol Finish")
     public void testStep05() {
         Assert.assertTrue(produkListPage.checkProperty());
     }
